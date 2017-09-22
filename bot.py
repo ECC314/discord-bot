@@ -34,4 +34,13 @@ async def on_member_unban(guild, member):
             await client.get_channel(channelid).send(message)
             break
 
+@client.event
+async def on_member_remove(member):
+	log = await member.guild.audit_logs().__anext__();
+	print(log)
+	if (log.action == discord.AuditLogAction.kick):
+		message = "{} kicked {}.".format(log.user.name, member.name)
+		print(message)
+		await client.get_channel(channelid).send(message)
+
 client.run('auth-token')
