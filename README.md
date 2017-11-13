@@ -8,6 +8,7 @@
 - Ban/unban
 - Kick
 - Mute/unmute
+- Deafen/undeafen
 
 ## Usage
 ```
