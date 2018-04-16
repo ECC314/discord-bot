@@ -9,6 +9,7 @@
 - Kick
 - Mute/unmute
 - Deafen/undeafen
+- Deletion of someone else's chat message (WIP, does not work reliably for known reasons.)
 
 ## Usage
 ```

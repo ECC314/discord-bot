@@ -63,4 +63,16 @@ async def on_voice_state_update(member, before, after):
 		if (message):
 			await client.get_channel(channelid).send(message)
 
+# Log deleted messages.
+@client.event
+async def on_message_delete(msg):
+	log = await msg.guild.audit_logs().__anext__();
+	if (log.action == discord.AuditLogAction.message_delete):
+		if (log.user == msg.author):
+			print("User deleted their own message; this will not be logged.")
+		else:
+			message = "{} deleted {}'s post in #{}: \n'{}'".format(log.user.mention, msg.author.mention, msg.channel.name, msg.content)
+			print(message)
+			await client.get_channel(channelid).send(message)
+
 client.run(argv[2])
